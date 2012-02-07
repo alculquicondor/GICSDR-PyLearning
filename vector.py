@@ -5,8 +5,6 @@ Authors:
 	Aldo Culquicondor - @alculquicondor
 """
 
-import sys
-
 class Vector():
     def __init__(self, *elems):
         'Receives multiple numerical arguments, lists or tuples'
