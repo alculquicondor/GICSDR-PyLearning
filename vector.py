@@ -2,7 +2,7 @@
 Date: Febrary 7, 2012
 Authors:
     Frank Moreno - @kranfix
-	Aldo Culquicondor - @alculquicondor
+    Aldo Culquicondor - @alculquicondor
 """
 
 class Vector():
@@ -40,7 +40,7 @@ class Vector():
     def __len__(self):
         return len(self.__vector)
 
-	def __add__(self, other):
+    def __add__(self, other):
         'The sum must be by two vector with the same length'
         if not isinstance(other,Vector):
             raise TypeError, \
