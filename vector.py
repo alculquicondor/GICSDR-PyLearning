@@ -63,7 +63,7 @@ class Vector():
 				'Operation not defined for '+type(other).__name__
 
 		if len(self) != len(other):
-			raise ValueError, \
+            raise ValueError, \
 				'Incompatible sizes for '+str(self)+' and '+str(other)
 
 		b = other.get()
