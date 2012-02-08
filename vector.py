@@ -22,7 +22,7 @@ class Vector():
                 raise ValueError, 'Elements must be numerical'
         self.__elems = elems
 	
-	def getElements(self, type="t"):
+	def get(self, type="t"):
 		"""
 		type = "t" returns the vector like a tuple
 		type = "l" returns the vector like a list
@@ -51,7 +51,7 @@ class Vector():
 				'Incompatible sizes for '+str(self)+' and '+str(other)
 		a = self.get()
 		b = other.get()
-		return Vector(*[x+b[i] for i,x in enumerate(a)])
+		return Vector(*[x + y for x, y in zip(a, b)])
 
 	def __mul__(self, other):
 		if not isinstance(other,Vector):
@@ -64,7 +64,7 @@ class Vector():
 
 		a = self.get()
 		b = other.get()
-		return Vector(*[x*b[i] for i,x in enumerate(a)])
+		return Vector(*[x * y for x, y in zip(a, b)])
 
 	def __abs__(self):
 		return (self.dot(self))**0.5
@@ -72,7 +72,7 @@ class Vector():
 	def dot(self, other):
 		"""return the dot product"""
 		c = self * other
-		return sum(c.getElements())
+		return sum(c.get())
 
 
 if __name__ == '__main__':
