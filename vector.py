@@ -54,6 +54,7 @@ class Vector():
 		return Vector(*[x + y for x, y in zip(a, b)])
 
 	def __mul__(self, other):
+		'returns '
 		if not isinstance(other,Vector):
 			raise TypeError, \
 				'Operation not defined for '+type(other).__name__
@@ -74,13 +75,13 @@ class Vector():
 		c = self * other
 		return sum(c.get())
 
-
 if __name__ == '__main__':
 	a = Vector(1, 2, 3)
 	b = Vector(4, 5, 6)
 	c = a + b
 	d = a * b
 	e = dot(a, b)
+	print "Demos:"
 	print a, "+", b, "=", c
 	print a, "*", b, "=", d
 	print a, ".*", b, "=", e
