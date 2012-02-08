@@ -76,13 +76,13 @@ class Vector():
         return sum(c.getElems())
 
 if __name__ == '__main__':
-	a = Vector(1, 2, 3)
-	b = Vector(4, 5, 6)
-	c = a + b
-	d = a * b
-	e = a.dot(b)
-	print "Demos:"
-	print a, "+", b, "=", c
-	print a, "*", b, "=", d
-	print a, ".*", b, "=", e
+    a = Vector(1, 2, 3)
+    b = Vector(4, 5, 6)
+    c = a + b
+    d = a * b
+    e = a.dot(b)
+    print "Demos:"
+    print a, "+", b, "=", c
+    print a, "*", b, "=", d
+    print a, ".*", b, "=", e
     print "abs(a) =", abs(a)
