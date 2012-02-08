@@ -1,5 +1,5 @@
 """
-Date: Febrary 3, 2012
+Date: Febrary 7, 2012
 Authors:
 	Frank Moreno - @kranfix
 	Aldo Culquicondor - @alculquicondor
@@ -12,7 +12,7 @@ class Vector():
         t=[]
         for x in elems:
             if isinstance(x, (tuple,list)):
-                t[len(t):] = x
+                t = t + list(x)
             else:
                 t.append(x)
         elems=tuple(t)
@@ -21,7 +21,7 @@ class Vector():
             if not isinstance(x, (float,int)):
                 raise ValueError, 'Elements must be numerical'
         self.__elems = elems
-	
+
 	def get(self, type="t"):
 		"""
 		type = "t" returns the vector like a tuple
@@ -40,8 +40,9 @@ class Vector():
 
 	def __len__(self):
 		return len(self.__vector)
-	
+
 	def __add__(self, other):
+		'The sum must be by two vector with the same length'
 		if not isinstance(other,Vector):
 			raise TypeError, \
 				'Operation not defined for '+type(other).__name__
@@ -54,22 +55,23 @@ class Vector():
 		return Vector(*[x + y for x, y in zip(a, b)])
 
 	def __mul__(self, other):
-		'returns '
-		if not isinstance(other,Vector):
+		a = self.get()
+		if isinstance(other, (int, float):
+			return Vector(*[other * elem for elem in a])
+		elif not isinstance(other,Vector):
 			raise TypeError, \
 				'Operation not defined for '+type(other).__name__
-				
+
 		if len(self) != len(other):
 			raise ValueError, \
 				'Incompatible sizes for '+str(self)+' and '+str(other)
 
-		a = self.get()
 		b = other.get()
 		return Vector(*[x * y for x, y in zip(a, b)])
 
 	def __abs__(self):
 		return (self.dot(self))**0.5
-		
+
 	def dot(self, other):
 		"""return the dot product"""
 		c = self * other
@@ -80,7 +82,7 @@ if __name__ == '__main__':
 	b = Vector(4, 5, 6)
 	c = a + b
 	d = a * b
-	e = dot(a, b)
+	e = a.dot(b)
 	print "Demos:"
 	print a, "+", b, "=", c
 	print a, "*", b, "=", d
