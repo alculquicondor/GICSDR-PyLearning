@@ -6,10 +6,13 @@ Authors:
 """
 
 class Vector():
+    """
+    The Vector class represent vector in Real n-dimeon space
+    """
     def __init__(self, *elems):
         'Receives multiple numerical arguments, lists or tuples'
         #Concatenating possible lists or tuples
-        t = list()
+        t = list()  #empty list
         for x in elems:
             if isinstance(x, (tuple,list)):
                 t[len(t):] = list(x)
