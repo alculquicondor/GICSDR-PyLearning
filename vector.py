@@ -7,7 +7,8 @@ Authors:
 
 class Vector():
     """
-    The Vector class represent vector in Real n-dimeon space
+    The Vector class represent a vector in Real n-dimension space
+    in cartesian coordinate
     """
     def __init__(self, *elems):
         'Receives multiple numerical arguments, lists or tuples'
