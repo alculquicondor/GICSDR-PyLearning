@@ -63,14 +63,11 @@ class Vector():
         if len(self) != len(other):
             raise ValueError, \
                 'Incompatible sizes for '+str(self)+' and '+str(other)
-        a = self.getElems()
-        b = other.getElems()
-        return Vector(*[x + y for x, y in zip(a, b)])
+        return Vector(*[x + y for x, y in zip(self, other)])
 
     def __mul__(self, other):
-        a = self.getElems()
         if isinstance(other, (int, float)):
-            return Vector(*[other * elem for elem in a])
+            return Vector(*[other * elem for elem in self])
         if not isinstance(other,Vector):
             raise TypeError, \
                 'Operation not defined for '+type(other).__name__
@@ -78,8 +75,7 @@ class Vector():
             raise ValueError, \
                 'Incompatible sizes for '+str(self)+' and '+str(other)
 
-        b = other.getElems()
-        return Vector(*[x * y for x, y in zip(a, b)])
+        return Vector(*[x * y for x, y in zip(self, other)])
 
     def __abs__(self):
         return (self.dot(self)) ** 0.5
