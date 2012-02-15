@@ -44,6 +44,16 @@ class Vector():
     def __len__(self):
         return len(self.__vector)
 
+    def __iter__(self):
+        self.__index = -1
+        return self
+
+    def next(self):
+        if self.__index == len(self)-1:
+            raise StopIteration
+        self.__index += 1
+        return self.__vector[self.__index]
+
     def __add__(self, other):
         'The sum must be by two vector with the same length'
         if not isinstance(other,Vector):
