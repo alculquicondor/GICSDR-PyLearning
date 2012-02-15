@@ -82,8 +82,7 @@ class Vector():
 
     def dot(self, other):
         """return the dot product"""
-        c = self * other
-        return sum(c.getElems())
+        return sum((self*other).getElems())
 
 if __name__ == '__main__':
     a = Vector(1, 2, 3)
