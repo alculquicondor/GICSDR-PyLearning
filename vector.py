@@ -1,5 +1,5 @@
 """
-Date: Febrary 7, 2012
+Date: Febrary 22, 2012
 Authors:
     Frank Moreno - @kranfix
     Aldo Culquicondor - @alculquicondor
@@ -13,35 +13,33 @@ class Vector():
     def __init__(self, *elems):
         'Receives multiple numerical arguments, lists or tuples'
         #Concatenating possible lists or tuples
-        t = list()  #empty list
+        self.__vector = list()  #empty list
         for x in elems:
             if isinstance(x, (tuple,list)):
-                t[len(t):] = list(x)
+                self.__vector[len(t):] = list(x)
             else:
-                t.append(x)
+                self.__vector.append(x)
         #Verifying that all the elements are numerical
-        for x in elems:
+        for x in self.__vector:
             if not isinstance(x, (float,int)):
                 raise ValueError, 'Elements must be numerical'
-        self.__vector = tuple(elems)
-
-    def getElems(self, tp="t"):
-        """
-        tp = "t" returns the vector like a tuple
-        tp = "l" returns the vector like a list
-        """
-        if tp == "t":
-            return self.__vector
-        elif tp == "l":
-            return list(self.__vector)
 
     def __str__(self):
-        return str(self.__vector)
+        return str(tuple(self.__vector))
 
     def __unicode__(self):
-        return unicode(self.__vector)
+        return unicode(tuple(self.__vector))
+
+    def __list__(self):
+        'return the vector as a list'
+        return self.__vector
+
+    def __tuple__(self):
+        'return a vector as a tuple'
+        return tuple(vector.__vector)
 
     def __len__(self):
+        'return the vector\'s length'
         return len(self.__vector)
 
     def __iter__(self):
@@ -67,26 +65,25 @@ class Vector():
 
     def __mul__(self, other):
         if isinstance(other, (int, float)):
-            return Vector(*[other * elem for elem in self])
+            return Vector(*[elem * other  for elem in self])
         if not isinstance(other,Vector):
             raise TypeError, \
                 'Operation not defined for '+type(other).__name__
         if len(self) != len(other):
             raise ValueError, \
                 'Incompatible sizes for '+str(self)+' and '+str(other)
-
         return Vector(*[x * y for x, y in zip(self, other)])
 
     def __abs__(self):
-        return (self.dot(self)) ** 0.5
+        return self.dot(self) ** 0.5
 
     def dot(self, other):
-        """return the dot product"""
-        return sum((self*other).getElems())
+        'return the dot product'
+        return sum(self*other)
 
 if __name__ == '__main__':
-    a = Vector(1, 2, 3)
-    b = Vector(4, 5, 6)
+    a = Vector(1, [2, 3])
+    b = Vector((4, 5), 6)
     c = a + b
     d = a * b
     e = a.dot(b)
