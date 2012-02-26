@@ -16,7 +16,7 @@ class Vector():
         self.__vector = list()  #empty list
         for x in elems:
             if isinstance(x, (tuple,list)):
-                self.__vector[len(t):] = list(x)
+                self.__vector[len(self.__vector):] = list(x)
             else:
                 self.__vector.append(x)
         #Verifying that all the elements are numerical
@@ -72,7 +72,7 @@ class Vector():
         if len(self) != len(other):
             raise ValueError, \
                 'Incompatible sizes for '+str(self)+' and '+str(other)
-        return Vector(*[x * y for x, y in zip(self, other)])
+        return Vector([x * y for x, y in zip(self, other)])
 
     def __abs__(self):
         return self.dot(self) ** 0.5
