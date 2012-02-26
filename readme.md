@@ -9,6 +9,7 @@ Vector class is published with LGPL V.3
 Authors
 =======
 *Frank Moreno
+
 *Aldo Culquicondor
 
 This repository is made for The GICS Dennis Ritchie
