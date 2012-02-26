@@ -1,8 +1,15 @@
-This Repository contains demostration code for the Python classes by:
-The GICS Dennis Ritchie
-from "Universidad Nacional de Ingeniería" (Lima-PE)
+Repositiry contains
+===================
+The repo contains some example for python code.
 
-Licence: LGPL V.3
-Authors:
-    Frank Moreno
-    Aldo Culquicondor
+Licence
+=======
+Vector class is published with LGPL V.3
+
+Authors
+=======
+*Frank Moreno
+*Aldo Culquicondor
+
+This repository is made for The GICS Dennis Ritchie
+from "Universidad Nacional de Ingeniería" (Lima-PE)
