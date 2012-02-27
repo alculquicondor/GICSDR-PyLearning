@@ -74,8 +74,11 @@ if __name__ == '__main__':
     c = a + b
     d = a * b
     e = a.dot(b)
+    f = Vector(a, b)
     print "Demos:"
     print a, "+", b, "=", c
     print a, "*", b, "=", d
     print a, ".*", b, "=", e
-    print "abs(a) =", abs(a)
+    print "abs(%s) =" % str(a), abs(a)
+    print "list(a) =", list(a)
+    print "f =", f
