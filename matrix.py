@@ -1,11 +1,8 @@
 from vector import Vector as v
 
-"""
-A Matrix is an array of vectors
-"""
-
 class Matrix(object):
-    
+    'A Matrix is a list of vectors'
+
     def __init__(self, *rows):
         """
         Matrix(row1[, row2[, row3, ...]])
@@ -19,9 +16,11 @@ class Matrix(object):
         
         if max(l) != min(l):
             raise ValueError, 'The rows have got differents sizes'
+        else:
+
 
     def __add__(self, other):
-        pass
+       return Matrix(*[x + y for x, y in zip(self, other)])
 
     def __mul__(self, other):
         pass

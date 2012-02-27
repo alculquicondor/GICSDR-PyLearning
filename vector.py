@@ -1,10 +1,3 @@
-"""
-Date: Febrary 22, 2012
-Authors:
-    Frank Moreno - @kranfix
-    Aldo Culquicondor - @alculquicondor
-"""
-
 class Vector():
     """
     The Vector class represent a vector in Real n-dimension space
@@ -15,7 +8,7 @@ class Vector():
         #Concatenating possible lists or tuples
         self.__vector = list()  #empty list
         for x in elems:
-            if isinstance(x, (tuple,list)):
+            if isinstance(x, (tuple, list, Vector)):
                 self.__vector[len(self.__vector):] = list(x)
             else:
                 self.__vector.append(x)
@@ -25,10 +18,10 @@ class Vector():
                 raise ValueError, 'Elements must be numerical'
 
     def __str__(self):
-        return str(tuple(self.__vector))
+        return str(self.__vector)
 
     def __unicode__(self):
-        return unicode(tuple(self.__vector))
+        return unicode(self.__vector)
 
     def __list__(self):
         'return the vector as a list'
@@ -43,14 +36,8 @@ class Vector():
         return len(self.__vector)
 
     def __iter__(self):
-        self.__index = -1
-        return self
-
-    def next(self):
-        if self.__index == len(self)-1:
-            raise StopIteration
-        self.__index += 1
-        return self.__vector[self.__index]
+        for x in self.__vector:
+            yield x
 
     def __add__(self, other):
         'The sum must be by two vector with the same length'
@@ -61,11 +48,11 @@ class Vector():
         if len(self) != len(other):
             raise ValueError, \
                 'Incompatible sizes for '+str(self)+' and '+str(other)
-        return Vector(*[x + y for x, y in zip(self, other)])
+        return Vector([x + y for x, y in zip(self, other)])
 
     def __mul__(self, other):
         if isinstance(other, (int, float)):
-            return Vector(*[elem * other  for elem in self])
+            return Vector([elem * other  for elem in self])
         if not isinstance(other,Vector):
             raise TypeError, \
                 'Operation not defined for '+type(other).__name__
